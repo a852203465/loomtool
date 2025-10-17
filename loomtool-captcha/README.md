@@ -160,6 +160,8 @@ public class CaptchaTest {
 ```yaml
 loom:
   captcha:
+    # 必须为true
+    enabled: true
     # 验证码类型
     type: arithmetic
     # 验证码图片高

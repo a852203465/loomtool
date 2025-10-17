@@ -21,6 +21,11 @@ import java.time.Duration;
 public class CaptchaProperties {
 
     /**
+     * 是否启用，默认:false
+     */
+    private Boolean enabled = Boolean.FALSE;
+
+    /**
      * 验证码类型,默认:Spec
      */
     private CaptchaType type = CaptchaType.Spec;

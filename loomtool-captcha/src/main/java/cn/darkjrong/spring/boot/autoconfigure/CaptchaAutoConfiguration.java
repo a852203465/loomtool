@@ -4,6 +4,7 @@ import cn.darkjrong.captcha.factory.cap.CaptchaFactory;
 import cn.darkjrong.captcha.factory.store.CaptchaStore;
 import cn.darkjrong.captcha.factory.store.MemoryCaptchaStore;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -18,6 +19,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @EnableConfigurationProperties(CaptchaProperties.class)
 @ComponentScan("cn.darkjrong.captcha")
+@ConditionalOnProperty(prefix = "loom.captcha", name = "enabled", havingValue = "true")
 public class CaptchaAutoConfiguration {
 
     @Bean
