@@ -1,6 +1,6 @@
 package cn.darkjrong.core.utils;
 
-import cn.darkjrong.core.exceptions.StlWebException;
+import cn.darkjrong.core.exceptions.LoomWebException;
 import cn.hutool.core.lang.Validator;
 import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.StrUtil;
@@ -66,7 +66,7 @@ public class ResponseUtils {
     public static void success(ResponseVO<?> response, ExceptionEnum exceptionEnum) {
         if (!Validator.equal(NumberConstant.ZERO, response.getCode())) {
             log.error("success {}", exceptionEnum.getMessage());
-            throw new StlWebException(exceptionEnum);
+            throw new LoomWebException(exceptionEnum);
         }
     }
 
@@ -80,7 +80,7 @@ public class ResponseUtils {
     public static void success(ResponseVO<?> response, Integer code, String message) {
         if (!Validator.equal(NumberConstant.ZERO, response.getCode())) {
             log.error("success {}", message);
-            throw new StlWebException(code, message);
+            throw new LoomWebException(code, message);
         }
     }
 
@@ -92,7 +92,7 @@ public class ResponseUtils {
     public static void success(ResponseVO<?> response) {
         if (!Validator.equal(NumberConstant.ZERO, response.getCode())) {
             log.error("success {}", response.getMessage());
-            throw new StlWebException(ErrorEnum.ERROR.getCode(), response.getMessage());
+            throw new LoomWebException(ErrorEnum.ERROR.getCode(), response.getMessage());
         }
     }
 
@@ -125,14 +125,14 @@ public class ResponseUtils {
      * @param response 响应
      * @param exceptionEnum 异常枚举
      * @return {@link T} 响应信息
-     * @throws StlWebException 异常
+     * @throws LoomWebException 异常
      */
     public static <T> T getResponse(ResponseVO<T> response, ExceptionEnum exceptionEnum) {
         if (Validator.equal(NumberConstant.ZERO, response.getCode())) {
             return response.getData();
         }
         log.error("getResponse {}", exceptionEnum.getMessage());
-        throw new StlWebException(exceptionEnum);
+        throw new LoomWebException(exceptionEnum);
     }
 
     /**
@@ -140,14 +140,14 @@ public class ResponseUtils {
      *
      * @param response 响应
      * @return {@link T} 响应信息
-     * @throws StlWebException 异常
+     * @throws LoomWebException 异常
      */
     public static <T> T getResponseException(ResponseVO<T> response) {
         if (Validator.equal(NumberConstant.ZERO, response.getCode())) {
             return response.getData();
         }
         String message = StrUtil.isBlank(response.getMessage()) ? ErrorEnum.SYSTEM_ERROR.getMessage() : response.getMessage();
-        throw new StlWebException(ErrorEnum.ERROR.getCode(), message);
+        throw new LoomWebException(ErrorEnum.ERROR.getCode(), message);
     }
 
 

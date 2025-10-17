@@ -1,9 +1,9 @@
 package cn.darkjrong.exceptions;
 
-import cn.darkjrong.core.exceptions.StlException;
-import cn.darkjrong.core.exceptions.StlRuntimeException;
-import cn.darkjrong.core.exceptions.StlStatefulException;
-import cn.darkjrong.core.exceptions.StlWebException;
+import cn.darkjrong.core.exceptions.LoomException;
+import cn.darkjrong.core.exceptions.LoomRuntimeException;
+import cn.darkjrong.core.exceptions.LoomStatefulException;
+import cn.darkjrong.core.exceptions.LoomWebException;
 import cn.hutool.core.exceptions.ExceptionUtil;
 import cn.darkjrong.core.enums.ErrorEnum;
 import cn.darkjrong.core.domain.ResponseVO;
@@ -71,8 +71,8 @@ public class StlWebExceptionHandler {
      * @param e e
      * @return {@link ResponseVO}
      */
-    @ExceptionHandler(value = StlWebException.class)
-    public ResponseVO stlWebExceptionHandler(StlWebException e) {
+    @ExceptionHandler(value = LoomWebException.class)
+    public ResponseVO stlWebExceptionHandler(LoomWebException e) {
         log.error("stlWebExceptionHandler  {}", ExceptionUtil.stacktraceToString(e));
         return ResponseVO.error(e.getCode(), e.getMessage());
     }
@@ -83,8 +83,8 @@ public class StlWebExceptionHandler {
      * @param e e
      * @return {@link ResponseVO}
      */
-    @ExceptionHandler(value = StlException.class)
-    public ResponseVO stlExceptionHandler(StlException e) {
+    @ExceptionHandler(value = LoomException.class)
+    public ResponseVO stlExceptionHandler(LoomException e) {
         log.error("stlExceptionHandler  {}", ExceptionUtil.stacktraceToString(e));
         return ResponseVO.error(ErrorEnum.ERROR.getCode(), e.getMessage());
     }
@@ -95,8 +95,8 @@ public class StlWebExceptionHandler {
      * @param e e
      * @return {@link ResponseVO}
      */
-    @ExceptionHandler(value = StlRuntimeException.class)
-    public ResponseVO stlRuntimeExceptionHandler(StlRuntimeException e) {
+    @ExceptionHandler(value = LoomRuntimeException.class)
+    public ResponseVO stlRuntimeExceptionHandler(LoomRuntimeException e) {
         log.error("stlRuntimeExceptionHandler  {}", ExceptionUtil.stacktraceToString(e));
         return ResponseVO.error(ErrorEnum.ERROR.getCode(), e.getMessage());
     }
@@ -107,8 +107,8 @@ public class StlWebExceptionHandler {
      * @param e e
      * @return {@link ResponseVO}
      */
-    @ExceptionHandler(value = StlStatefulException.class)
-    public ResponseVO stlStatefulExceptionHandler(StlStatefulException e) {
+    @ExceptionHandler(value = LoomStatefulException.class)
+    public ResponseVO stlStatefulExceptionHandler(LoomStatefulException e) {
         log.error("stlStatefulExceptionHandler  {}", ExceptionUtil.stacktraceToString(e));
         return ResponseVO.error(e.getStatus(), e.getMessage());
     }
@@ -236,8 +236,8 @@ public class StlWebExceptionHandler {
     @ResponseBody
     public ResponseVO defaultErrorHandler(Exception e) {
 
-        if (e.getCause() instanceof StlWebException) {
-            stlWebExceptionHandler((StlWebException) e);
+        if (e.getCause() instanceof LoomWebException) {
+            stlWebExceptionHandler((LoomWebException) e);
         }
 
         if (e.getCause() instanceof IllegalArgumentException) {
@@ -256,8 +256,8 @@ public class StlWebExceptionHandler {
             constraintViolationExceptionHandler((ConstraintViolationException) e.getCause());
         }
 
-        if (e.getCause() instanceof StlStatefulException) {
-            stlStatefulExceptionHandler((StlStatefulException) e.getCause());
+        if (e.getCause() instanceof LoomStatefulException) {
+            stlStatefulExceptionHandler((LoomStatefulException) e.getCause());
         }
 
         log.error("defaultErrorHandler : {}", ExceptionUtil.stacktraceToString(e));
@@ -274,8 +274,8 @@ public class StlWebExceptionHandler {
     @ResponseBody
     public ResponseVO runtimeErrorHandler(RuntimeException e) {
 
-        if (e.getCause() instanceof StlWebException) {
-            stlWebExceptionHandler((StlWebException) e);
+        if (e.getCause() instanceof LoomWebException) {
+            stlWebExceptionHandler((LoomWebException) e);
         }
 
         if (e.getCause() instanceof HttpMessageNotReadableException) {
@@ -298,8 +298,8 @@ public class StlWebExceptionHandler {
             constraintViolationExceptionHandler((ConstraintViolationException) e.getCause());
         }
 
-        if (e.getCause() instanceof StlStatefulException) {
-            stlStatefulExceptionHandler((StlStatefulException) e.getCause());
+        if (e.getCause() instanceof LoomStatefulException) {
+            stlStatefulExceptionHandler((LoomStatefulException) e.getCause());
         }
 
         log.error("runtimeErrorHandler : {}", ExceptionUtil.stacktraceToString(e));

@@ -15,31 +15,31 @@ import java.io.Serializable;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class StlRuntimeException extends RuntimeException implements Serializable {
+public class LoomRuntimeException extends RuntimeException implements Serializable {
 
     private static final long serialVersionUID = -1501020198729282518L;
 
-    public StlRuntimeException(Throwable e) {
+    public LoomRuntimeException(Throwable e) {
         super(ExceptionUtil.getMessage(e), e);
     }
 
-    public StlRuntimeException(String message) {
+    public LoomRuntimeException(String message) {
         super(message);
     }
 
-    public StlRuntimeException(String messageTemplate, Object... params) {
+    public LoomRuntimeException(String messageTemplate, Object... params) {
         super(StrUtil.format(messageTemplate, params));
     }
 
-    public StlRuntimeException(String message, Throwable throwable) {
+    public LoomRuntimeException(String message, Throwable throwable) {
         super(message, throwable);
     }
 
-    public StlRuntimeException(String message, Throwable throwable, boolean enableSuppression, boolean writableStackTrace) {
+    public LoomRuntimeException(String message, Throwable throwable, boolean enableSuppression, boolean writableStackTrace) {
         super(message, throwable, enableSuppression, writableStackTrace);
     }
 
-    public StlRuntimeException(Throwable throwable, String messageTemplate, Object... params) {
+    public LoomRuntimeException(Throwable throwable, String messageTemplate, Object... params) {
         super(StrUtil.format(messageTemplate, params), throwable);
     }
 

@@ -1,6 +1,6 @@
 package cn.darkjrong.core.utils;
 
-import cn.darkjrong.core.exceptions.StlRuntimeException;
+import cn.darkjrong.core.exceptions.LoomRuntimeException;
 import cn.hutool.core.codec.Base64;
 import cn.hutool.core.io.IoUtil;
 import cn.hutool.core.util.CharsetUtil;
@@ -33,7 +33,7 @@ public class EncipherUtils {
             rsa = SecureUtil.rsa(null, Base64.decode(base64));
         } catch (Exception e) {
             log.error("**********,The encryption key is incorrectly loaded", e);
-            throw new StlRuntimeException(e);
+            throw new LoomRuntimeException(e);
         }
     }
 

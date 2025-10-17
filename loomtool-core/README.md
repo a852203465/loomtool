@@ -14,10 +14,10 @@
 
 ### 1.2 异常包说明
  - 该版本增加三个基础的Exception类
-   - cn.darkjrong.core.exceptions.StlException -> 用于方法声明异常，需要调用者处理；也可自定义异常继承该类
-   - cn.darkjrong.core.exceptions.StlRuntimeException -> 用于程序逻辑抛出异常，可无需调用者处理；也可自定义异常继承该类
-   - cn.darkjrong.core.exceptions.StlStatefulException -> 用于需抛出带状态异常
-   - cn.darkjrong.core.exceptions.StlWebException -> 用于程序抛出逻辑异常；也可自定义异常继承该类
+   - cn.darkjrong.core.exceptions.LoomException -> 用于方法声明异常，需要调用者处理；也可自定义异常继承该类
+   - cn.darkjrong.core.exceptions.LoomRuntimeException -> 用于程序逻辑抛出异常，可无需调用者处理；也可自定义异常继承该类
+   - cn.darkjrong.core.exceptions.LoomStatefulException -> 用于需抛出带状态异常
+   - cn.darkjrong.core.exceptions.LoomWebException -> 用于程序抛出逻辑异常；也可自定义异常继承该类
 - 后期无需再项目自定义异常
 
 

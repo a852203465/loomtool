@@ -2,7 +2,7 @@ package cn.darkjrong.aliyun.oss.api.impl;
 
 import cn.darkjrong.aliyun.oss.api.PresignedUrlApi;
 import cn.darkjrong.core.enums.ErrorEnum;
-import cn.darkjrong.core.exceptions.StlWebException;
+import cn.darkjrong.core.exceptions.LoomWebException;
 import cn.darkjrong.core.lang.constants.FileConstant;
 import cn.darkjrong.spring.boot.autoconfigure.AliyunOssProperties;
 import cn.hutool.core.date.DateUtil;
@@ -70,7 +70,7 @@ public class PresignedUrlApiImpl implements PresignedUrlApi {
             return signedUrl;
         } catch (Exception e) {
             log.error(String.format("bucket【%s】object【%s】获取访问连接, 异常【%s】", bucketName, objectName, e.getMessage()), e);
-            throw new StlWebException(ErrorEnum.FILE_OBJECT_ACQUISITION_ACCESSIBLE_CONNECTION_EXCEPTION);
+            throw new LoomWebException(ErrorEnum.FILE_OBJECT_ACQUISITION_ACCESSIBLE_CONNECTION_EXCEPTION);
         }
     }
 

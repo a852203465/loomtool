@@ -12,7 +12,7 @@ import java.io.Serializable;
  * @date 2023/06/27
  */
 @Getter
-public class StlStatefulException extends RuntimeException implements Serializable {
+public class LoomStatefulException extends RuntimeException implements Serializable {
 
     private static final long serialVersionUID = 5125726279105828472L;
 
@@ -21,40 +21,40 @@ public class StlStatefulException extends RuntimeException implements Serializab
      */
     private Integer status;
 
-    public StlStatefulException() {
+    public LoomStatefulException() {
     }
 
-    public StlStatefulException(String msg) {
+    public LoomStatefulException(String msg) {
         super(msg);
     }
 
-    public StlStatefulException(String messageTemplate, Object... params) {
+    public LoomStatefulException(String messageTemplate, Object... params) {
         super(StrUtil.format(messageTemplate, params));
     }
 
-    public StlStatefulException(Throwable throwable) {
+    public LoomStatefulException(Throwable throwable) {
         super(throwable);
     }
 
-    public StlStatefulException(String msg, Throwable throwable) {
+    public LoomStatefulException(String msg, Throwable throwable) {
         super(msg, throwable);
     }
 
-    public StlStatefulException(String message, Throwable throwable, boolean enableSuppression, boolean writableStackTrace) {
+    public LoomStatefulException(String message, Throwable throwable, boolean enableSuppression, boolean writableStackTrace) {
         super(message, throwable, enableSuppression, writableStackTrace);
     }
 
-    public StlStatefulException(int status, String msg) {
+    public LoomStatefulException(int status, String msg) {
         super(msg);
         this.status = status;
     }
 
-    public StlStatefulException(int status, Throwable throwable) {
+    public LoomStatefulException(int status, Throwable throwable) {
         super(throwable);
         this.status = status;
     }
 
-    public StlStatefulException(int status, String msg, Throwable throwable) {
+    public LoomStatefulException(int status, String msg, Throwable throwable) {
         super(msg, throwable);
         this.status = status;
     }

@@ -11,14 +11,14 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * Stl线程事件配置
+ * 线程事件配置
  *
  * @author Rong.Jia
  * @date 2024/02/22
  */
 @Slf4j
 @Configuration
-public class StlThreadEventConfig implements ApplicationContextAware, InitializingBean, DisposableBean {
+public class LoomThreadEventConfig implements ApplicationContextAware, InitializingBean, DisposableBean {
 
     private ApplicationContext applicationContext;
 

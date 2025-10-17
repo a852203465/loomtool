@@ -5,7 +5,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * STL自动配置
+ * 核心包自动配置
  *
  * @author Rong.Jia
  * @date 2021/07/07
@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @EnableSpringUtil
 @ComponentScan("cn.darkjrong.core")
-public class StlCoreAutoConfiguration {
+public class LoomCoreAutoConfiguration {
 
 
 
