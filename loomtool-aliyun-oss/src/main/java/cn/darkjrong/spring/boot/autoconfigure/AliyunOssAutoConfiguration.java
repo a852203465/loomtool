@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 @EnableConfigurationProperties(AliyunOssProperties.class)
-@ConditionalOnProperty(prefix = "stl.aliyun.oss", name = "enabled", havingValue = "true")
+@ConditionalOnProperty(prefix = "loom.aliyun.oss", name = "enabled", havingValue = "true")
 @ComponentScan("cn.darkjrong.aliyun.oss")
 public class AliyunOssAutoConfiguration {
 

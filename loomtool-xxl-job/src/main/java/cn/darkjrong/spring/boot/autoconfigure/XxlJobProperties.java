@@ -15,7 +15,7 @@ import java.util.List;
  */
 @Data
 @Configuration
-@ConfigurationProperties(prefix = "stl.xxl-job")
+@ConfigurationProperties(prefix = "loom.xxl-job")
 public class XxlJobProperties {
 
     /**

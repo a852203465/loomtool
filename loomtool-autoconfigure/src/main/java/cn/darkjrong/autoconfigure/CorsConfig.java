@@ -26,8 +26,8 @@ import org.springframework.web.util.pattern.PathPatternParser;
  */
 @Data
 @Configuration
-@ConfigurationProperties(prefix = "stl.cors")
-@ConditionalOnProperty(prefix = "stl.cors", name = "enabled", havingValue = "true")
+@ConfigurationProperties(prefix = "loom.cors")
+@ConditionalOnProperty(prefix = "loom.cors", name = "enabled", havingValue = "true")
 public class CorsConfig {
 
     private static final String SPRING_VERSION = "2.4.0";

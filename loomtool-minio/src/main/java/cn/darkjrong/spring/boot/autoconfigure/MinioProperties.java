@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
  */
 @Data
 @Configuration
-@ConfigurationProperties(prefix = "stl.minio")
+@ConfigurationProperties(prefix = "loom.minio")
 public class MinioProperties {
 
     private static final long DEFAULT_TIMEOUT = 5 * 60 * 1000L;

@@ -12,8 +12,8 @@ import org.springframework.context.annotation.Configuration;
  */
 @Data
 @Configuration
-@ConfigurationProperties(prefix = "stl.trim")
-public class TrimStringProperties {
+@ConfigurationProperties(prefix = "loom.trim")
+public class LoomTrimStringProperties {
 
     /**
      *  是否开启，默认：false

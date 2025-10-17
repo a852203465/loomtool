@@ -21,8 +21,8 @@ import java.util.concurrent.ThreadPoolExecutor;
 @Slf4j
 @Data
 @Configuration
-@ConditionalOnProperty(prefix = "stl.task.pool", name = "enabled", havingValue = "true")
-@ConfigurationProperties(prefix = "stl.task.pool")
+@ConditionalOnProperty(prefix = "loom.task.pool", name = "enabled", havingValue = "true")
+@ConfigurationProperties(prefix = "loom.task.pool")
 public class AsyncExecutorPoolConfig implements AsyncConfigurer {
 
     /**

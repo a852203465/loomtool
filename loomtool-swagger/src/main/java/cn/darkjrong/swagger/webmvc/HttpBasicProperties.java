@@ -10,7 +10,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * @date 2022/02/11
  */
 @Data
-@ConfigurationProperties(prefix = "stl.swagger.basic")
+@ConfigurationProperties(prefix = "loom.swagger.basic")
 public class HttpBasicProperties {
 
     /**

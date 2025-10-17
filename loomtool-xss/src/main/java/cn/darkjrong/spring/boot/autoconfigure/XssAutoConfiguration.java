@@ -24,7 +24,7 @@ import java.util.stream.Collectors;
 @Configuration
 @EnableConfigurationProperties(XssProperties.class)
 @ComponentScan("cn.darkjrong.xss")
-@ConditionalOnProperty(prefix = "stl.xss", name = "enabled", havingValue = "true")
+@ConditionalOnProperty(prefix = "loom.xss", name = "enabled", havingValue = "true")
 public class XssAutoConfiguration {
 
     @Bean

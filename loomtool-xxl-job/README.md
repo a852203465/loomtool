@@ -15,7 +15,7 @@ xxl-job 自动注册xxl-job执行器以及任务
 
 ```yaml
 # Xxl-Job分布式定时任务调度中心
-stl:
+loom:
   xxl-job:
     # 必须为true
     enabled: true

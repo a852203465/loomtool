@@ -17,8 +17,8 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
 @Slf4j
 @Data
 @Configuration
-@ConditionalOnProperty(prefix = "stl.scheduled", name = "enabled", havingValue = "true")
-@ConfigurationProperties(prefix = "stl.scheduled")
+@ConditionalOnProperty(prefix = "loom.scheduled", name = "enabled", havingValue = "true")
+@ConfigurationProperties(prefix = "loom.scheduled")
 public class ScheduledConfig {
 
     /**

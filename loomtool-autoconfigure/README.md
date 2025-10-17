@@ -13,7 +13,7 @@
 ### 1.2 配置参数(application.properties)  yml配置
 #### 1.2.1 线程池配置
 ```yaml
-stl:
+loom:
   task:
     pool:
       enabled: true   # 必须为true, 否则不会生效
@@ -26,7 +26,7 @@ stl:
 
 #### 1.2.2 文件上传限制配置(仅WebMvc生效)
 ```yaml
-stl:
+loom:
   multipart:
     enabled: true  # 必须为true, 否则不会生效
     location: /data   
@@ -38,7 +38,7 @@ stl:
 
 #### 1.2.3 定时器连接池
 ```yaml
-stl:
+loom:
   scheduled:
     enabled: true  # 是否开启
     pool-size: 10
@@ -46,14 +46,14 @@ stl:
 
 #### 1.2.4 跨域
 ```yaml
-stl:
+loom:
   cors:
     enabled: true  # 是否开启
 ```
 
 #### 1.2.5 任务执行器
 ```yaml
-stl:
+loom:
   task:
     executor:
       enabled: true   # 必须为true, 否则不会生效
@@ -65,7 +65,7 @@ stl:
 
 #### 1.2.6 参数去除前后空格
 ```yaml
-stl:
+loom:
   trim:
     enabled: true
 ```

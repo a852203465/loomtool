@@ -17,7 +17,7 @@ import org.springframework.context.annotation.Configuration;
  */
 @AllArgsConstructor
 @Configuration
-@ConditionalOnProperty(prefix = "stl.xxl-job", name = "enabled", havingValue = "true")
+@ConditionalOnProperty(prefix = "loom.xxl-job", name = "enabled", havingValue = "true")
 @EnableConfigurationProperties({XxlJobProperties.class})
 public class XxlJobConfig {
 

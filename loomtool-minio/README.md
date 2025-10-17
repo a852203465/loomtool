@@ -15,7 +15,7 @@ MINIO Java SDK封装
 
 ### 2.配置参数(application.properties)  yml配置
 ```yaml
-stl:
+loom:
     minio:
       # 必须为true
       enabled: true

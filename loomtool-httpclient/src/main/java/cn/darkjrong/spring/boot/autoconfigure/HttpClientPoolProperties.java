@@ -14,7 +14,7 @@ import java.util.Map;
  */
 @Data
 @Configuration
-@ConfigurationProperties(prefix = "stl.http-client")
+@ConfigurationProperties(prefix = "loom.http-client")
 public class HttpClientPoolProperties {
 
     /**

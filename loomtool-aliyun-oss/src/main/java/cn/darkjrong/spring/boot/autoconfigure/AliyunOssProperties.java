@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
  */
 @Data
 @Configuration
-@ConfigurationProperties(prefix = "stl.aliyun.oss")
+@ConfigurationProperties(prefix = "loom.aliyun.oss")
 public class AliyunOssProperties {
 
     /**

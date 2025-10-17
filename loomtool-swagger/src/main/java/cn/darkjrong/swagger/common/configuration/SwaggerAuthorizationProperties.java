@@ -10,7 +10,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * @date 2022/02/11
  */
 @Data
-@ConfigurationProperties("stl.swagger.authorization")
+@ConfigurationProperties("loom.swagger.authorization")
 public class SwaggerAuthorizationProperties {
 
     /**

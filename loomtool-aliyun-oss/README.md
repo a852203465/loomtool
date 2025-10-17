@@ -15,7 +15,7 @@
 
 ### 2.配置参数(application.properties) yml配置
 ```yaml
-stl:
+loom:
   aliyun:
     oss:
       # 必须为true

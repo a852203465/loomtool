@@ -16,7 +16,7 @@
 ```yaml
 
 #swagger公共信息
-stl:
+loom:
   swagger:
     production: true 是否是生产环境
     title: 招投标项目-工作流引擎服务

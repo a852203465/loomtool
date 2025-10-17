@@ -1,7 +1,7 @@
 package cn.darkjrong.autoconfigure;
 
 import cn.darkjrong.autoconfigure.escape.StringTrimDeserializer;
-import cn.darkjrong.spring.boot.autoconfigure.TrimStringProperties;
+import cn.darkjrong.spring.boot.autoconfigure.LoomTrimStringProperties;
 import cn.hutool.core.util.CharsetUtil;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.parser.Feature;
@@ -35,7 +35,7 @@ import static cn.hutool.core.util.CharsetUtil.UTF_8;
 public class HttpMessageConverterConfig {
 
     @Autowired
-    private TrimStringProperties trimStringProperties;
+    private LoomTrimStringProperties loomTrimStringProperties;
 
     /**
      * http消息转换器。
@@ -68,7 +68,7 @@ public class HttpMessageConverterConfig {
                 SerializerFeature.DisableCircularReferenceDetect
         );
 
-        if (trimStringProperties.isEnabled()) {
+        if (loomTrimStringProperties.isEnabled()) {
             fastJsonConfig.setFeatures(Feature.TrimStringFieldValue, Feature.UseNativeJavaObject);
             ParserConfig parserConfig = ParserConfig.getGlobalInstance();
             parserConfig.putDeserializer(String.class, new StringTrimDeserializer());

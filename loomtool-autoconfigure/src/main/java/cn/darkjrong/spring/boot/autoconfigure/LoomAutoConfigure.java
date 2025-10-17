@@ -6,7 +6,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * STL自动配置
+ * 自动配置
  *
  * @author Rong.Jia
  * @date 2021/07/07
@@ -14,8 +14,8 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @EnableSpringUtil
 @ComponentScan("cn.darkjrong.autoconfigure")
-@EnableConfigurationProperties(TrimStringProperties.class)
-public class StlAutoConfigure {
+@EnableConfigurationProperties(LoomTrimStringProperties.class)
+public class LoomAutoConfigure {
 
 
 

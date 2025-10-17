@@ -15,7 +15,7 @@ import java.util.Set;
  */
 @Data
 @Configuration
-@ConfigurationProperties(prefix = "stl.wrapper")
+@ConfigurationProperties(prefix = "loom.wrapper")
 public class BodyCacheProperties {
 
     /**

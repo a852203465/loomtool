@@ -20,8 +20,8 @@ import java.util.concurrent.ThreadPoolExecutor;
 @Slf4j
 @Data
 @Configuration
-@ConfigurationProperties(prefix = "stl.task.executor")
-@ConditionalOnProperty(prefix = "stl.task.executor", name = "enabled", havingValue = "true")
+@ConfigurationProperties(prefix = "loom.task.executor")
+@ConditionalOnProperty(prefix = "loom.task.executor", name = "enabled", havingValue = "true")
 public class TaskExecutorConfig {
 
     /**

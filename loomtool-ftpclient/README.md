@@ -12,7 +12,7 @@ FTP Client操作包
 
 ## 1.2 yml配置
 ```yaml
-stl:
+loom:
   ftp:
     client:
         # 必须配置enabled: true，否则默认false不起作用

@@ -25,8 +25,8 @@ import java.io.File;
 @Data
 @Configuration
 @ConditionalOnClass({DispatcherServlet.class, WebMvcConfigurer.class})
-@ConditionalOnProperty(prefix = "stl.multipart", name = "enabled", havingValue = "true")
-@ConfigurationProperties(prefix = "stl.multipart")
+@ConditionalOnProperty(prefix = "loom.multipart", name = "enabled", havingValue = "true")
+@ConfigurationProperties(prefix = "loom.multipart")
 public class FileUploadConfig {
 
     private static final String TMP_DIR = System.getProperty("user.dir") + "/data/tmp";

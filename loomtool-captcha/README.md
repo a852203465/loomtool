@@ -158,7 +158,7 @@ public class CaptchaTest {
 ### 2.3 Spring Boot环境
 #### 2.3.1 配置参数(application.properties) yml配置
 ```yaml
-stl:
+loom:
   captcha:
     # 验证码类型
     type: arithmetic

@@ -11,7 +11,7 @@
 
 ## 2.配置参数(application.properties)  yml配置
 ```yaml
-stl:
+loom:
     http-client:
       # 是否开启
       enabled: true

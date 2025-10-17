@@ -11,7 +11,7 @@
 ## 2.Spring starter方式使用
  - yml配置，必须配置enabled: true，否则默认false不起作用
 ```yaml
-stl:
+loom:
     email:
       enabled: true
       # 是否免认证， 默认：false

@@ -10,7 +10,7 @@
 
 ## 2.配置参数(application.properties)  yml配置
 ```yaml
-stl:
+loom:
   retry:
     # 最大重试次数
     max-attempts: 3

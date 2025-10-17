@@ -13,7 +13,7 @@
 配置文件application.yml
 
 ```yaml
-stl:
+loom:
   xss:
     # 是否开启
     enabled: true

@@ -17,7 +17,7 @@ import java.time.Duration;
  */
 @Data
 @Configuration
-@ConfigurationProperties(prefix = "stl.captcha")
+@ConfigurationProperties(prefix = "loom.captcha")
 public class CaptchaProperties {
 
     /**

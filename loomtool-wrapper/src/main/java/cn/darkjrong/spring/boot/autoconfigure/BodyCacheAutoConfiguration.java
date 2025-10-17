@@ -17,7 +17,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @EnableConfigurationProperties(BodyCacheProperties.class)
 @ComponentScan("cn.darkjrong.wrapper")
-@ConditionalOnProperty(prefix = "stl.wrapper", name = "enabled", havingValue = "true")
+@ConditionalOnProperty(prefix = "loom.wrapper", name = "enabled", havingValue = "true")
 public class BodyCacheAutoConfiguration {
 
     @Bean

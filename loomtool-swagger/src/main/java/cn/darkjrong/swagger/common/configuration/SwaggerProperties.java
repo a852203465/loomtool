@@ -20,7 +20,7 @@ import java.util.Map;
  */
 @Data
 @Configuration
-@ConfigurationProperties(prefix = "stl.swagger")
+@ConfigurationProperties(prefix = "loom.swagger")
 public class SwaggerProperties {
 
 	/**

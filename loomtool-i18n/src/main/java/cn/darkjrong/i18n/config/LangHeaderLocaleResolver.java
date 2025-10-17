@@ -49,11 +49,11 @@ public class LangHeaderLocaleResolver implements LocaleContextResolver {
 
 	@Override
 	public Locale resolveLocale(HttpServletRequest request) {
-		String requestLang = request.getHeader(headerName);
-		if (StrUtil.isBlank(requestLang)) {
-			requestLang = request.getParameter(headerName);
+		String requeloomang = request.getHeader(headerName);
+		if (StrUtil.isBlank(requeloomang)) {
+			requeloomang = request.getParameter(headerName);
 		}
-		Locale locale = StrUtil.isNotBlank(requestLang) ? Locale.forLanguageTag(requestLang) : defaultLocale;
+		Locale locale = StrUtil.isNotBlank(requeloomang) ? Locale.forLanguageTag(requeloomang) : defaultLocale;
 		return isSupportedLocale(locale) ? locale : defaultLocale;
 	}
 	

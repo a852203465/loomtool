@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Configuration;
 @ComponentScan("cn.darkjrong.xxljob")
 @Configuration
 @EnableConfigurationProperties({XxlJobProperties.class})
-@ConditionalOnProperty(prefix = "stl.xxl-job", name = "enabled", havingValue = "true")
+@ConditionalOnProperty(prefix = "loom.xxl-job", name = "enabled", havingValue = "true")
 public class XxlJobAutoConfiguration {
 
 

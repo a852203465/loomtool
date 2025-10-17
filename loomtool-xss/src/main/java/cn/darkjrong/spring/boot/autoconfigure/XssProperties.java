@@ -14,7 +14,7 @@ import java.util.*;
  */
 @Data
 @Configuration
-@ConfigurationProperties(prefix = "stl.xss")
+@ConfigurationProperties(prefix = "loom.xss")
 public class XssProperties {
 
     /**

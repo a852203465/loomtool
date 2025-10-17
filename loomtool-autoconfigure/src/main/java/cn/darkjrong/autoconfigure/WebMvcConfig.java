@@ -37,7 +37,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
      * 对get,form 去除字符串前后空格
      */
     @Bean
-    @ConditionalOnProperty(prefix = "stl.trim", name = "enabled", havingValue = "true")
+    @ConditionalOnProperty(prefix = "loom.trim", name = "enabled", havingValue = "true")
     public ConfigurableWebBindingInitializer configurableWebBindingInitializer() {
         ConfigurableWebBindingInitializer initializer = new ConfigurableWebBindingInitializer();
         FormattingConversionService conversionService = new DefaultFormattingConversionService();

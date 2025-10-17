@@ -17,7 +17,7 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 @Data
 @Configuration
-@ConfigurationProperties("stl.retry")
+@ConfigurationProperties("loom.retry")
 public class RetryPlanProperties {
 
     /**
