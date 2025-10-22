@@ -1,12 +1,16 @@
 package cn.darkjrong.spring.boot.autoconfigure;
 
 import cn.darkjrong.retry.RetryTemplate;
+import cn.hutool.core.collection.CollUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.BeanCreationException;
 import org.springframework.beans.factory.FactoryBean;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+
+import java.util.List;
 
 /**
  * 重试工厂类
@@ -26,7 +30,17 @@ public class RetryFactoryBean implements FactoryBean<RetryTemplate>, Initializin
     }
 
     @Override
-    public void afterPropertiesSet() {
+    public void afterPropertiesSet() throws Exception {
+        Integer maxAttempts = retryPlanProperties.getMaxAttempts();
+        List<RetryPlanProperties.ScheduleProperties> plans = retryPlanProperties.getPlans();
+        if (CollUtil.isEmpty(plans)) {
+            log.error("*********,重试计划配置不能为空");
+            throw new BeanCreationException("重试计划配置不能为空");
+        }
+        if (maxAttempts != plans.size()) {
+            log.error("*********,重试计划数量与最大重试次数不一致");
+            throw new BeanCreationException("重试计划配置数量与最大重试次数不一致");
+        }
         retryTemplate = new RetryTemplate(retryPlanProperties);
     }
 
