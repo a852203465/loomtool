@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Configuration;
  */
 @Data
 @Configuration
-@ConfigurationProperties(prefix = "ftp.server")
+@ConfigurationProperties(prefix = "loom.ftp.server")
 public class FtpServerProperties {
 
     /**

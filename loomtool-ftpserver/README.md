@@ -11,16 +11,17 @@
 ### yml配置
     必须配置enabled: true，否则默认false不起作用
 ```yaml
-ftp:
-  server:
-    enabled: true
-    host: 192.168.205.105
-    port: 21
-    activePort: 20
-    passivePorts: 6000-6008
-    username: admin
-    password: 123456
-    homeDirectory: /data/res
+  loom:
+    ftp:
+      server:
+        enabled: true
+        host: 192.168.205.105
+        port: 21
+        activePort: 20
+        passivePorts: 6000-6008
+        username: admin
+        password: 123456
+        homeDirectory: /data/res
 ```
 
 ### 文件接收，实现AlarmCallBack
