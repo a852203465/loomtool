@@ -68,7 +68,7 @@ public class FtpServerProperties {
     private Integer maxIdleTime = 300;
 
     /**
-     * user home directory,默认：System.getProperty("user.dir") +"/data/res"
+     * user home directory,默认：System.getProperty("user.dir") +"/ftp/res"
      */
     private String homeDirectory;
 
