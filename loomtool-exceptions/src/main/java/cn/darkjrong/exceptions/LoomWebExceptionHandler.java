@@ -41,7 +41,7 @@ import java.util.Set;
 @Slf4j
 @SuppressWarnings("ALL")
 @RestControllerAdvice
-public class loomWebExceptionHandler {
+public class LoomWebExceptionHandler {
 
     /**
      * 捕获违反约束异常，并返回异常数据

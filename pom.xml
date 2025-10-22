@@ -44,6 +44,7 @@
         <module>loomtool-captcha</module>
         <module>loomtool-wrapper</module>
         <module>loomtool-ftpclient</module>
+        <module>loomtool-ftpserver</module>
     </modules>
 
     <properties>
@@ -64,16 +65,16 @@
                 <scope>import</scope>
             </dependency>
             <dependency>
-                <groupId>com.github.xiaoymin</groupId>
-                <artifactId>knife4j-dependencies</artifactId>
-                <version>3.0.3</version>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
             <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-dependencies</artifactId>
-                <version>${spring-cloud.version}</version>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>knife4j-dependencies</artifactId>
+                <version>3.0.3</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -187,9 +188,16 @@
                 <artifactId>commons-net</artifactId>
                 <version>3.12.0</version>
             </dependency>
-
-
-
+            <dependency>
+                <groupId>org.apache.ftpserver</groupId>
+                <artifactId>ftplet-api</artifactId>
+                <version>1.2.1</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.ftpserver</groupId>
+                <artifactId>ftpserver-core</artifactId>
+                <version>1.2.1</version>
+            </dependency>
 
         </dependencies>
     </dependencyManagement>
