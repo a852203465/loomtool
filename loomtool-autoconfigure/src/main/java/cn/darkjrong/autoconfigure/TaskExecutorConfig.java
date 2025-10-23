@@ -1,9 +1,8 @@
 package cn.darkjrong.autoconfigure;
 
-import lombok.Data;
+import cn.darkjrong.spring.boot.autoconfigure.LoomExecutorProperties;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -18,36 +17,15 @@ import java.util.concurrent.ThreadPoolExecutor;
  * @date 2023/07/01
  */
 @Slf4j
-@Data
 @Configuration
-@ConfigurationProperties(prefix = "loom.task.executor")
 @ConditionalOnProperty(prefix = "loom.task.executor", name = "enabled", havingValue = "true")
 public class TaskExecutorConfig {
 
-    /**
-     *  是否开启，默认：false
-     */
-    private boolean enabled = false;
+    private final LoomExecutorProperties loomExecutorProperties;
 
-    /**
-     * 核心数
-     */
-    private int corePoolSize = 5;
-
-    /**
-     * 最大数
-     */
-    private int maxPoolSize = 50;
-
-    /**
-     * 活跃时间，单位：秒
-     */
-    private int keepAliveSeconds = 5;
-
-    /**
-     * 队列大小
-     */
-    private int queueCapacity = 500;
+    public TaskExecutorConfig(LoomExecutorProperties loomExecutorProperties) {
+        this.loomExecutorProperties = loomExecutorProperties;
+    }
 
     @Primary
     @Bean
@@ -56,13 +34,13 @@ public class TaskExecutorConfig {
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
 
         //核心线程池大小
-        executor.setCorePoolSize(corePoolSize);
+        executor.setCorePoolSize(loomExecutorProperties.getCorePoolSize());
         //最大线程数
-        executor.setMaxPoolSize(maxPoolSize);
+        executor.setMaxPoolSize(loomExecutorProperties.getMaxPoolSize());
         //队列容量
-        executor.setQueueCapacity(queueCapacity);
+        executor.setQueueCapacity(loomExecutorProperties.getQueueCapacity());
         //活跃时间
-        executor.setKeepAliveSeconds(keepAliveSeconds);
+        executor.setKeepAliveSeconds(loomExecutorProperties.getKeepAliveSeconds());
 
         //线程名字前缀
         executor.setThreadNamePrefix("taskExecutor-");

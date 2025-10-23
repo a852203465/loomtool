@@ -9,7 +9,7 @@ import cn.hutool.core.util.StrUtil;
 import cn.darkjrong.core.lang.constants.Base64Constant;
 import cn.darkjrong.core.lang.constants.FileConstant;
 import cn.darkjrong.core.lang.constants.NetworkProtocol;
-import cn.darkjrong.core.multipart.CustomMultipartFile;
+import cn.darkjrong.core.lang.multipart.CustomMultipartFile;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.multipart.MultipartFile;
 

@@ -1,4 +1,4 @@
-package cn.darkjrong.core.thread;
+package cn.darkjrong.core.lang.thread;
 
 import cn.hutool.core.thread.ThreadUtil;
 

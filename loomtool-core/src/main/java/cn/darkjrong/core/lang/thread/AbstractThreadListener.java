@@ -1,7 +1,7 @@
-package cn.darkjrong.core.thread;
+package cn.darkjrong.core.lang.thread;
 
 import cn.darkjrong.core.enums.ThreadStatus;
-import cn.darkjrong.core.events.ThreadEvent;
+import cn.darkjrong.core.lang.events.ThreadEvent;
 import org.springframework.context.ApplicationListener;
 
 /**

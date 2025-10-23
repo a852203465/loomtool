@@ -1,10 +1,10 @@
 package cn.darkjrong.autoconfigure;
 
+import cn.darkjrong.core.lang.constants.FileConstant;
+import cn.darkjrong.spring.boot.autoconfigure.LoomFileUploadProperties;
 import cn.hutool.core.util.StrUtil;
-import lombok.Data;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.web.servlet.MultipartConfigFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,44 +22,16 @@ import java.io.File;
  * @author Rong.Jia
  * @date 2021/07/07
  */
-@Data
 @Configuration
 @ConditionalOnClass({DispatcherServlet.class, WebMvcConfigurer.class})
 @ConditionalOnProperty(prefix = "loom.multipart", name = "enabled", havingValue = "true")
-@ConfigurationProperties(prefix = "loom.multipart")
 public class FileUploadConfig {
 
-    private static final String TMP_DIR = System.getProperty("user.dir") + "/data/tmp";
+    private final LoomFileUploadProperties loomFileUploadProperties;
 
-    /**
-     *  是否开启， 默认：false
-     */
-    private boolean enabled = false;
-
-    /**
-     * 路径， 默认：System.getProperty("user.dir") + "/data/tmp";
-     */
-    private String location;
-
-    /**
-     *  路径是否在当前项目的根目录生成
-     */
-    private Boolean isProjectRoot = Boolean.TRUE;
-
-    /**
-     * 文件大小限制，单位：M 默认： 10M
-     */
-    private Long maxFileSize = 10L;
-
-    /**
-     * 设置总上传数据总大小，单位：M 默认： 10M
-     */
-    private Long maxRequestSize = 10L;
-
-    /**
-     * 设置磁盘写入的限制，单位：M 默认： 20M
-     */
-    private Long fileSizeThreshold = 20L;
+    public FileUploadConfig(LoomFileUploadProperties loomFileUploadProperties) {
+        this.loomFileUploadProperties = loomFileUploadProperties;
+    }
 
     @Bean
     public MultipartConfigElement multipartConfigElement() {
@@ -72,17 +44,23 @@ public class FileUploadConfig {
             tmpFile.mkdirs();
         }
 
-        factory.setLocation(location);
-        factory.setFileSizeThreshold(DataSize.ofMegabytes(fileSizeThreshold));
-        factory.setMaxFileSize(DataSize.ofMegabytes(maxFileSize));
-        factory.setMaxRequestSize(DataSize.ofMegabytes(maxRequestSize));
+        DataSize fileSizeThreshold = DataSize.ofMegabytes(loomFileUploadProperties.getFileSizeThreshold());
+        DataSize maxFileSize = DataSize.ofMegabytes(loomFileUploadProperties.getMaxFileSize());
+        DataSize maxRequestSize = DataSize.ofMegabytes(loomFileUploadProperties.getMaxRequestSize());
+
+        factory.setLocation(loomFileUploadProperties.getLocation());
+        factory.setFileSizeThreshold(fileSizeThreshold);
+        factory.setMaxFileSize(maxFileSize);
+        factory.setMaxRequestSize(maxRequestSize);
         return factory.createMultipartConfig();
     }
 
-    public String getLocation() {
-        String path = TMP_DIR;
-        if (StrUtil.isNotBlank(location)) {
-            path = isProjectRoot ? System.getProperty("user.dir") + location : location;
+    private String getLocation() {
+        String path = FileConstant.TMP_DIR;
+        if (StrUtil.isNotBlank(loomFileUploadProperties.getLocation())) {
+            path = loomFileUploadProperties.getIsProjectRoot()
+                    ? System.getProperty("user.dir") + loomFileUploadProperties.getLocation()
+                    : loomFileUploadProperties.getLocation();
         }
         return path;
     }

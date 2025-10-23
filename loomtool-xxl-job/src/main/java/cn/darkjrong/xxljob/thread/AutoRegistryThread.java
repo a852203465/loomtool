@@ -1,6 +1,6 @@
 package cn.darkjrong.xxljob.thread;
 
-import cn.darkjrong.core.thread.BaseTaskThread;
+import cn.darkjrong.core.lang.thread.BaseTaskThread;
 import cn.darkjrong.spring.boot.autoconfigure.XxlJobProperties;
 import cn.darkjrong.xxljob.annotation.XxlJobRegister;
 import cn.darkjrong.xxljob.domain.XxlJobGroup;

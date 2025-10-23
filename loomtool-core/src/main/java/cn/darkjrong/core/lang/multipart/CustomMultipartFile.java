@@ -1,4 +1,4 @@
-package cn.darkjrong.core.multipart;
+package cn.darkjrong.core.lang.multipart;
 
 import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.io.IoUtil;

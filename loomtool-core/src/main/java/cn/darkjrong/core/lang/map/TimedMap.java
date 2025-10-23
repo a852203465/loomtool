@@ -1,4 +1,4 @@
-package cn.darkjrong.core.map;
+package cn.darkjrong.core.lang.map;
 
 import java.time.Duration;
 import java.util.concurrent.ConcurrentHashMap;

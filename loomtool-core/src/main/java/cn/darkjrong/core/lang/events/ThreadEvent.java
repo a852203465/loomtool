@@ -1,4 +1,4 @@
-package cn.darkjrong.core.events;
+package cn.darkjrong.core.lang.events;
 
 import cn.darkjrong.core.enums.ThreadStatus;
 import lombok.Getter;

@@ -14,7 +14,14 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @EnableSpringUtil
 @ComponentScan("cn.darkjrong.autoconfigure")
-@EnableConfigurationProperties(LoomTrimStringProperties.class)
+@EnableConfigurationProperties({
+        LoomCorsProperties.class,
+        LoomExecutorPoolProperties.class,
+        LoomExecutorProperties.class,
+        LoomFileUploadProperties.class,
+        LoomScheduledProperties.class,
+        LoomTrimStringProperties.class,
+})
 public class LoomAutoConfigure {
 
 

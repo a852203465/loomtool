@@ -1,4 +1,4 @@
-package cn.darkjrong.core.constants;
+package cn.darkjrong.core.lang.constants;
 
 /**
  * ftp Server 常数

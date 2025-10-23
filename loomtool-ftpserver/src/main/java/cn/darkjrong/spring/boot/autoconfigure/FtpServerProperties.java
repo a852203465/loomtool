@@ -1,6 +1,6 @@
 package cn.darkjrong.spring.boot.autoconfigure;
 
-import cn.darkjrong.core.constants.FtpServerConstant;
+import cn.darkjrong.core.lang.constants.FtpServerConstant;
 import cn.hutool.core.util.StrUtil;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

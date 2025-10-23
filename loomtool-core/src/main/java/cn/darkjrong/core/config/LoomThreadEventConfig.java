@@ -1,6 +1,6 @@
 package cn.darkjrong.core.config;
 
-import cn.darkjrong.core.events.ThreadEvent;
+import cn.darkjrong.core.lang.events.ThreadEvent;
 import cn.darkjrong.core.enums.ThreadStatus;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeansException;

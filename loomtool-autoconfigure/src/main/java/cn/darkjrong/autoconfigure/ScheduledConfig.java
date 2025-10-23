@@ -1,9 +1,9 @@
 package cn.darkjrong.autoconfigure;
 
+import cn.darkjrong.spring.boot.autoconfigure.LoomScheduledProperties;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.TaskScheduler;
@@ -18,23 +18,18 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
 @Data
 @Configuration
 @ConditionalOnProperty(prefix = "loom.scheduled", name = "enabled", havingValue = "true")
-@ConfigurationProperties(prefix = "loom.scheduled")
 public class ScheduledConfig {
 
-    /**
-     * 是否开启，默认：false
-     */
-    private boolean enabled = false;
+    private final LoomScheduledProperties loomScheduledProperties;
 
-    /**
-     * 线程池个数，默认：10
-     */
-    private int poolSize = 10;
+    public ScheduledConfig(LoomScheduledProperties loomScheduledProperties) {
+        this.loomScheduledProperties = loomScheduledProperties;
+    }
 
     @Bean
     public TaskScheduler taskScheduler(){
         ThreadPoolTaskScheduler taskScheduler = new ThreadPoolTaskScheduler();
-        taskScheduler.setPoolSize(poolSize);
+        taskScheduler.setPoolSize(loomScheduledProperties.getPoolSize());
         taskScheduler.initialize();
         return taskScheduler;
     }

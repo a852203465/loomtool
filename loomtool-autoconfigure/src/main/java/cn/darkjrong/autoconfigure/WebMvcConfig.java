@@ -1,8 +1,7 @@
 package cn.darkjrong.autoconfigure;
 
-import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
 import cn.darkjrong.autoconfigure.escape.StringEscapeEditor;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
@@ -25,8 +24,11 @@ import java.util.List;
 @ConditionalOnClass({DispatcherServlet.class, WebMvcConfigurer.class})
 public class WebMvcConfig implements WebMvcConfigurer {
 
-    @Autowired
-    private FastJsonHttpMessageConverter fastJsonHttpMessageConverter;
+    private final FastJsonHttpMessageConverter fastJsonHttpMessageConverter;
+
+    public WebMvcConfig(FastJsonHttpMessageConverter fastJsonHttpMessageConverter) {
+        this.fastJsonHttpMessageConverter = fastJsonHttpMessageConverter;
+    }
 
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
