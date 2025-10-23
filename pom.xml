@@ -45,6 +45,7 @@
         <module>loomtool-wrapper</module>
         <module>loomtool-ftpclient</module>
         <module>loomtool-ftpserver</module>
+        <module>loomtool-latch</module>
     </modules>
 
     <properties>
