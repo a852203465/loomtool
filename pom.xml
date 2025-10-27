@@ -46,6 +46,7 @@
         <module>loomtool-ftpclient</module>
         <module>loomtool-ftpserver</module>
         <module>loomtool-latch</module>
+        <module>loomtool-rustfs</module>
     </modules>
 
     <properties>
@@ -199,7 +200,11 @@
                 <artifactId>ftpserver-core</artifactId>
                 <version>1.2.1</version>
             </dependency>
-
+            <dependency>
+                <groupId>software.amazon.awssdk</groupId>
+                <artifactId>s3</artifactId>
+                <version>2.36.2</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
