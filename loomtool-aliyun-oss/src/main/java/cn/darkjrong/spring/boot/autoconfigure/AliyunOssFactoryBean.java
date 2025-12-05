@@ -51,12 +51,14 @@ public class AliyunOssFactoryBean implements FactoryBean<OSS>, InitializingBean,
         Assert.notBlank(aliyunOssProperties.getAccessKeyId(), "'accessKeyId' must be not null");
         Assert.notBlank(aliyunOssProperties.getAccessKeySecret(), "'accessKeySecret' must be not null");
 
-        Boolean openIntranet = aliyunOssProperties.getOpenIntranet();
-        if (openIntranet) {
-            Assert.notBlank(aliyunOssProperties.getIntranet(), "'intranet' must be not null");
-            this.ossClient = new OSSClientBuilder().build(aliyunOssProperties.getIntranet(), aliyunOssProperties.getAccessKeyId(), aliyunOssProperties.getAccessKeySecret());
-        }else {
-            this.ossClient = new OSSClientBuilder().build(aliyunOssProperties.getEndpoint(), aliyunOssProperties.getAccessKeyId(), aliyunOssProperties.getAccessKeySecret());
+        AliyunOssProperties.Intranet intranet = aliyunOssProperties.getIntranet();
+        if (intranet.getEnabled()) {
+            Assert.notBlank(intranet.getEndpoint(), "'intranet.endpoint' must be not null");
+            this.ossClient = new OSSClientBuilder().build(intranet.getEndpoint(),
+                    aliyunOssProperties.getAccessKeyId(), aliyunOssProperties.getAccessKeySecret());
+        } else {
+            this.ossClient = new OSSClientBuilder().build(aliyunOssProperties.getEndpoint(),
+                    aliyunOssProperties.getAccessKeyId(), aliyunOssProperties.getAccessKeySecret());
         }
     }
 

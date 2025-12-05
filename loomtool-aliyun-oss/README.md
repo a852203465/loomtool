@@ -25,11 +25,12 @@ loom:
       # ak
       accessKeyId: 
       # aks
-      accessKeySecret: 
-      # 内网地址
-      intranet: http://oss-cn-shenzhen.aliyuncs.com
-      # 是否使用内网模式上传， 开启：true, 关闭：false
-      openIntranet: true
+      accessKeySecret:
+      intranet:
+          # 是否使用内网模式上传
+          enabled: false
+          # 内网地址
+          endpoint: http://oss-cn-shenzhen.aliyuncs.com
 ```
 
 ### 3.API 注入

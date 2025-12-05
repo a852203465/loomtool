@@ -1,8 +1,8 @@
 package cn.darkjrong.aliyun.oss;
 
-import com.aliyun.oss.OSS;
 import cn.darkjrong.spring.boot.autoconfigure.AliyunOssFactoryBean;
 import cn.darkjrong.spring.boot.autoconfigure.AliyunOssProperties;
+import com.aliyun.oss.OSS;
 
 /**
  * 测试类初始化
@@ -18,7 +18,10 @@ public class BaseApiTest {
     static {
         aliyunOSSProperties = new AliyunOssProperties();
         aliyunOSSProperties.setEndpoint("http://oss-cn-shenzhen.aliyuncs.com");
-        aliyunOSSProperties.setOpenIntranet(false);
+
+        AliyunOssProperties.Intranet intranet = new AliyunOssProperties.Intranet();
+        intranet.setEnabled(Boolean.FALSE);
+        aliyunOSSProperties.setIntranet(intranet);
         aliyunOSSProperties.setAccessKeyId("123131");
         aliyunOSSProperties.setAccessKeySecret("123213121221");
         AliyunOssFactoryBean aliyunOSSFactoryBean = new AliyunOssFactoryBean(aliyunOSSProperties);

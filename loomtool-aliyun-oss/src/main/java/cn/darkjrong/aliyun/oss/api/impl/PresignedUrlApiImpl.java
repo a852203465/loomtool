@@ -64,8 +64,10 @@ public class PresignedUrlApiImpl implements PresignedUrlApi {
         req.setExpiration(expiration);
         try {
             String signedUrl = ossClient.generatePresignedUrl(req).toString();
-            if (aliyunOSSProperties.getOpenIntranet()) {
-                signedUrl = StringUtils.replace(signedUrl, aliyunOSSProperties.getIntranet(), aliyunOSSProperties.getEndpoint());
+            AliyunOssProperties.Intranet intranet = aliyunOSSProperties.getIntranet();
+            if (intranet.getEnabled()) {
+                signedUrl = StringUtils.replace(signedUrl,
+                        intranet.getEndpoint(), aliyunOSSProperties.getEndpoint());
             }
             return signedUrl;
         } catch (Exception e) {

@@ -21,20 +21,14 @@ public class AliyunOssProperties {
     private Boolean enabled = Boolean.FALSE;
 
     /**
-     * 是否使用内网模式上传
-     * 开启：true, 关闭：false
-     */
-    private Boolean openIntranet = false;
-
-    /**
      * 外网域名
      */
     private String endpoint;
 
     /**
-     * 内网地址
+     * 内网
      */
-    private String intranet;
+    private Intranet intranet = new Intranet();
 
     /**
      * ak
@@ -45,6 +39,56 @@ public class AliyunOssProperties {
      * aks
      */
     private String accessKeySecret;
+
+    /**
+     * 图片压缩
+     */
+    private ThumbImage thumbImage;
+
+    @Data
+    public static class Intranet {
+
+        /**
+         * 是否使用内网模式上传
+         * 开启：true, 关闭：false
+         */
+        private Boolean enabled = false;
+
+        /**
+         * 内网地址
+         */
+        private String endpoint;
+
+    }
+
+    @Data
+    public static class ThumbImage {
+
+        /**
+         * 自动调节精度
+         */
+        private Boolean autoAccuracy = Boolean.FALSE;
+
+        /**
+         * 压缩后的文件最大值,单位KB
+         * {@see autoAccuracy值为true,该值无效}
+         */
+        private Integer maxSize;
+
+        /**
+         * 发生压缩的文件大小,单位KB
+         */
+        private Integer minSize;
+
+
+
+
+
+
+    }
+
+
+
 
 
 
