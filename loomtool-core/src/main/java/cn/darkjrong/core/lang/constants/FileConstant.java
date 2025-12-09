@@ -38,7 +38,7 @@ public class FileConstant {
 
     public static final Long EXPIRATION_TIME = 7200L * 1000;
 
-
+    public static final String SEPARATOR = "/";
 
 
 }
