@@ -8,7 +8,10 @@ import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.collection.CollectionUtil;
 import cn.hutool.core.date.DatePattern;
 import cn.hutool.core.date.DateUtil;
+import cn.hutool.core.util.CharsetUtil;
 import cn.hutool.core.util.ObjectUtil;
+import cn.hutool.core.util.StrUtil;
+import cn.hutool.core.util.URLUtil;
 import com.alibaba.excel.EasyExcel;
 import com.alibaba.excel.EasyExcelFactory;
 import com.alibaba.excel.ExcelWriter;
@@ -19,9 +22,11 @@ import com.alibaba.excel.write.builder.ExcelWriterSheetBuilder;
 import com.alibaba.excel.write.metadata.WriteSheet;
 import lombok.extern.slf4j.Slf4j;
 
+import javax.servlet.http.HttpServletResponse;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.lang.reflect.Field;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
@@ -34,6 +39,28 @@ import java.util.Set;
  */
 @Slf4j
 public class ExcelUtils {
+
+    public static final String XLS = ".xls";
+    public static final String XLSX = ".xlsx";
+    private static final List<String> EXCEL_TYPE_LIST = Arrays.asList(XLS, XLSX);
+
+    /**
+     * 响应头
+     *
+     * @param response 回应
+     * @param name 名称
+     */
+    public static void responseHeader(HttpServletResponse response, String name) {
+        response.setCharacterEncoding("utf-8");
+        response.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+        String fileName = URLUtil.encode(name, CharsetUtil.CHARSET_UTF_8)
+                .replaceAll("\\+", "%20");
+        String newFileName = fileName;
+        if (EXCEL_TYPE_LIST.stream().noneMatch(excelType -> StrUtil.endWith(fileName, excelType))) {
+            newFileName = newFileName + ".xlsx";
+        }
+        response.setHeader("Content-disposition", "attachment;filename*=utf-8''" + newFileName);
+    }
 
     /**
      * 写文件
