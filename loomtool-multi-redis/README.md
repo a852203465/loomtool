@@ -31,11 +31,9 @@ spring:
         max-idle: 100
         min-idle: 5
         max-wait: 10000ms
-xdc:
-  saas:
+
     multi-redis:
-      # 必须为true
-      enable-multi: true
+      enabled: true
       multi:
         redis1:
           host: dev.com
@@ -61,28 +59,7 @@ xdc:
               max-wait: 10000ms
 
 ```
-### 配置来源动态增加
-#### 实现‘AbstractRoutingRedisDataSource’类
-```java
-public class DynamicRedisDataSource extends AbstractRoutingRedisDataSource {
-
-    @Override
-    protected String determineCurrentLookupKey() {
-        return DynamicRedisContext.getDataSourceKey();
-    }
-
-    @Override
-    protected Integer determineCurrentLookupDb() {
-        return DynamicRedisContext.getDataSourceDb();
-    }
-
-    public void setDataSources(Map<String, RedisConnectionFactory> dataSources) {
-        super.setTargetDataSources(dataSources);
-    }
-
-}
-```
-#### 初始化其他来源方式的多数据源
+### 初始化其他来源方式的多数据源
 
 ```java
 import java.util.Collections;
