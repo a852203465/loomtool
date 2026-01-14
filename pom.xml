@@ -48,7 +48,7 @@
         <module>loomtool-latch</module>
         <module>loomtool-excel</module>
         <module>loomtool-multi-redis</module>
-<!--        <module>loomtool-multi-version-api</module>-->
+        <module>loomtool-multi-version-api</module>
     </modules>
 
     <properties>

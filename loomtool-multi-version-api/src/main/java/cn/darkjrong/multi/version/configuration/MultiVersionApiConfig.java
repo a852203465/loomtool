@@ -1,7 +1,7 @@
 package cn.darkjrong.multi.version.configuration;
 
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.DelegatingWebMvcConfiguration;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
 /**
@@ -11,7 +11,7 @@ import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandl
  * @date 2026/01/05
  */
 @Configuration
-public class MultiVersionApiConfig extends DelegatingWebMvcConfiguration {
+public class MultiVersionApiConfig extends WebMvcConfigurationSupport {
 
     @Override
     public RequestMappingHandlerMapping createRequestMappingHandlerMapping() {

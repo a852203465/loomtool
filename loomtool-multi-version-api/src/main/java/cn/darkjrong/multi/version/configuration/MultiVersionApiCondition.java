@@ -6,7 +6,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.servlet.mvc.condition.RequestCondition;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Arrays;
 
 /**
  * 版本匹配
@@ -29,8 +28,8 @@ public class MultiVersionApiCondition implements RequestCondition<MultiVersionAp
 
     @Override
     public MultiVersionApiCondition getMatchingCondition(HttpServletRequest request) {
-        String xApiVersion = request.getHeader("x-api-version");
-        String versionParam = request.getParameter("x-api-version");
+        String headerVersion = request.getHeader("x-api-version");
+        String paramVersion = request.getParameter("x-api-version");
         String pathVersion = null;
         String pathInfo = request.getPathInfo();
         if (StrUtil.isNotBlank(pathInfo)) {
@@ -39,11 +38,11 @@ public class MultiVersionApiCondition implements RequestCondition<MultiVersionAp
                 pathVersion = parts[parts.length - 1];
             }
         }
-        String[] strings = {pathVersion, versionParam, xApiVersion};
-        String version = Arrays.stream(strings)
-                .filter(StrUtil::isNotBlank)
-                .findFirst()
-                .orElse(null);
+        String version = StrUtil.isNotBlank(paramVersion)
+                ? paramVersion
+                : StrUtil.isNotBlank(pathVersion)
+                    ? pathVersion
+                    : headerVersion;
         return compareVersion(version, apiVersion) == 0 ? this : null;
     }
 
