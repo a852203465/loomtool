@@ -20,7 +20,7 @@ public class XssProperties {
     /**
      * 是否开启，默认：false
      */
-    private boolean enabled = true;
+    private boolean enabled = false;
 
     /**
      * 需要排除的URL模式，这些URL不会进行XSS过滤。

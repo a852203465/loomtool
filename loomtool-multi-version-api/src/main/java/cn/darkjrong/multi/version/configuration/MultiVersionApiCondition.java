@@ -1,6 +1,8 @@
 package cn.darkjrong.multi.version.configuration;
 
+import cn.darkjrong.spring.boot.autoconfigure.MultiVersionApiProperties;
 import cn.hutool.core.util.ArrayUtil;
+import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.StrUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.servlet.mvc.condition.RequestCondition;
@@ -16,20 +18,22 @@ import javax.servlet.http.HttpServletRequest;
 public class MultiVersionApiCondition implements RequestCondition<MultiVersionApiCondition> {
 
     private final String apiVersion;
+    private final MultiVersionApiProperties multiVersionApiProperties;
 
-    public MultiVersionApiCondition(String apiVersion) {
+    public MultiVersionApiCondition(String apiVersion, MultiVersionApiProperties multiVersionApiProperties) {
         this.apiVersion = apiVersion;
+        this.multiVersionApiProperties = multiVersionApiProperties;
     }
 
     @Override
     public MultiVersionApiCondition combine(MultiVersionApiCondition other) {
-        return new MultiVersionApiCondition(other.apiVersion);
+        return new MultiVersionApiCondition(other.apiVersion, multiVersionApiProperties);
     }
 
     @Override
     public MultiVersionApiCondition getMatchingCondition(HttpServletRequest request) {
-        String headerVersion = request.getHeader("x-api-version");
-        String paramVersion = request.getParameter("x-api-version");
+        String headerVersion = request.getHeader(multiVersionApiProperties.getHeaderName());
+        String paramVersion = request.getParameter(multiVersionApiProperties.getHeaderName());
         String pathVersion = null;
         String pathInfo = request.getPathInfo();
         if (StrUtil.isNotBlank(pathInfo)) {
@@ -40,10 +44,11 @@ public class MultiVersionApiCondition implements RequestCondition<MultiVersionAp
         }
         String version = StrUtil.isNotBlank(paramVersion)
                 ? paramVersion
-                : StrUtil.isNotBlank(pathVersion)
+                : (StrUtil.isNotBlank(pathVersion)
                     ? pathVersion
-                    : headerVersion;
-        return compareVersion(version, apiVersion) == 0 ? this : null;
+                    : headerVersion);
+        boolean defaultVersion = ObjectUtil.isAllEmpty(headerVersion, paramVersion, pathVersion);
+        return defaultVersion ? null : (compareVersion(version, apiVersion) == 0 ? this : null);
     }
 
     @Override
