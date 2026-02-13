@@ -70,7 +70,7 @@ spring:
         MultiRedisContext.setDataSourceKey("redis2");
         redisUtils.set("redis2", "33333");
 
-        MultiRedisContext.clearDataSource();
+        MultiRedisContext.clearDataSourceKey();
         redisUtils.set("mo1", "11111");
 
     }
