@@ -41,7 +41,7 @@ public class MultiRedisContext {
         return currentRedisNameHolder.get();
     }
 
-    public static void clearDataSource() {
+    public static void clearDataSourceKey() {
         currentRedisNameHolder.remove();
     }
 
