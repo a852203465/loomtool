@@ -75,7 +75,6 @@ public abstract class AbstractRoutingRedisDataSource implements InitializingBean
 //    }
 
     protected abstract String determineCurrentLookupKey();
-    protected abstract Integer determineCurrentLookupDb();
 
     protected RedisConnectionFactory determineTargetDataSource() {
         Assert.notNull(this.targetDataSources, "DataSource router not initialized");
@@ -92,11 +91,7 @@ public abstract class AbstractRoutingRedisDataSource implements InitializingBean
 
     @Override
     public RedisConnection getConnection() {
-        RedisConnection connection = determineTargetDataSource().getConnection();
-            if (ObjectUtil.isNotNull(determineCurrentLookupDb())) {
-                connection.select(determineCurrentLookupDb());
-            }
-        return connection;
+        return determineTargetDataSource().getConnection();
     }
 
     @Override

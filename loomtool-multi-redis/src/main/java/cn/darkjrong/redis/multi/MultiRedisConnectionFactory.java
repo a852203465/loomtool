@@ -1,6 +1,6 @@
 package cn.darkjrong.redis.multi;
 
-import cn.darkjrong.redis.multi.supports.DynamicRedisContext;
+import cn.darkjrong.redis.multi.supports.MultiRedisContext;
 
 /**
  * Multi Redis 连接工厂
@@ -12,12 +12,8 @@ public class MultiRedisConnectionFactory extends AbstractRoutingRedisDataSource 
 
     @Override
     protected String determineCurrentLookupKey() {
-        return DynamicRedisContext.getDataSourceKey();
+        return MultiRedisContext.getDataSourceKey();
     }
 
-    @Override
-    protected Integer determineCurrentLookupDb() {
-        return DynamicRedisContext.getDataSourceDb();
-    }
 
 }

@@ -13,7 +13,7 @@ import java.util.Set;
  * @author Rong.Jia
  * @date 2024/09/03
  */
-public class DynamicRedisContext {
+public class MultiRedisContext {
 
     private static final ThreadLocal<String> currentRedisNameHolder = new ThreadLocal<String>() {
         @Override
@@ -22,12 +22,10 @@ public class DynamicRedisContext {
         }
     };
 
-    private static final ThreadLocal<Integer> currentDbHolder = new ThreadLocal<Integer>();
-
     /**
      * 数据源的 key集合，用于切换时判断数据源是否存在
      */
-    public static Set<String> dataSourceKeys = new HashSet<>();
+    private static final Set<String> dataSourceKeys = new HashSet<>();
 
     public static void setDataSourceKey(String currentRedisName) {
         if (StrUtil.isNotBlank(currentRedisName)) {
@@ -37,20 +35,14 @@ public class DynamicRedisContext {
 
     public static void setDataSourceKey(String currentRedisName, Integer db) {
         currentRedisNameHolder.set(currentRedisName);
-        currentDbHolder.set(db);
     }
 
     public static String getDataSourceKey() {
         return currentRedisNameHolder.get();
     }
 
-    public static Integer getDataSourceDb() {
-        return currentDbHolder.get();
-    }
-
     public static void clearDataSource() {
         currentRedisNameHolder.remove();
-        currentDbHolder.remove();
     }
 
     /**

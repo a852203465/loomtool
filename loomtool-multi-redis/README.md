@@ -1,6 +1,6 @@
 # Redis多数据源模块
 
-## 引入依赖
+## 1.引入依赖
 ```xml
 <dependencies>
     <dependency>
@@ -11,8 +11,8 @@
 
 ```
 
-## 使用说明
-### 在application.yml中加入如下配置
+## 2.使用说明
+### 2.1在application.yml中加入如下配置
 ```yaml
 # 默认的
 spring:
@@ -32,6 +32,7 @@ spring:
         min-idle: 5
         max-wait: 10000ms
 
+    # 动态的
     multi-redis:
       enabled: true
       multi:
@@ -59,7 +60,24 @@ spring:
               max-wait: 10000ms
 
 ```
-### 初始化其他来源方式的多数据源
+### 2.2使用方式
+```java
+    @Test
+    void set2() {
+        redisUtils.set("mo", "11111");
+        MultiRedisContext.setDataSourceKey("redis1");
+        redisUtils.set("redis1", "22222");
+        MultiRedisContext.setDataSourceKey("redis2");
+        redisUtils.set("redis2", "33333");
+
+        MultiRedisContext.clearDataSource();
+        redisUtils.set("mo1", "11111");
+
+    }
+```
+
+
+## 3.初始化其他来源方式的多数据源
 
 ```java
 import java.util.Collections;
@@ -81,7 +99,6 @@ public class DbRedisPropertiesAdapter implements RedisPropertiesAdapter {
     }
 }
 ```
-
 
 
 
