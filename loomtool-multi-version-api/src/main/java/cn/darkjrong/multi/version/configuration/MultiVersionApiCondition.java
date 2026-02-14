@@ -1,7 +1,6 @@
 package cn.darkjrong.multi.version.configuration;
 
 import cn.darkjrong.spring.boot.autoconfigure.MultiVersionApiProperties;
-import cn.hutool.core.util.ArrayUtil;
 import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.StrUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -34,20 +33,18 @@ public class MultiVersionApiCondition implements RequestCondition<MultiVersionAp
     public MultiVersionApiCondition getMatchingCondition(HttpServletRequest request) {
         String headerVersion = request.getHeader(multiVersionApiProperties.getHeaderName());
         String paramVersion = request.getParameter(multiVersionApiProperties.getHeaderName());
-        String pathVersion = null;
-        String pathInfo = request.getPathInfo();
-        if (StrUtil.isNotBlank(pathInfo)) {
-            String[] parts = pathInfo.split("/");
-            if (ArrayUtil.isNotEmpty(parts)) {
-                pathVersion = parts[parts.length - 1];
-            }
-        }
+//        String pathVersion = null;
+//        String pathInfo = request.getPathInfo();
+//        if (StrUtil.isNotBlank(pathInfo)) {
+//            String[] parts = pathInfo.split("/");
+//            if (ArrayUtil.isNotEmpty(parts)) {
+//                pathVersion = parts[parts.length - 1];
+//            }
+//        }
         String version = StrUtil.isNotBlank(paramVersion)
                 ? paramVersion
-                : (StrUtil.isNotBlank(pathVersion)
-                    ? pathVersion
-                    : headerVersion);
-        boolean defaultVersion = ObjectUtil.isAllEmpty(headerVersion, paramVersion, pathVersion);
+                : headerVersion;
+        boolean defaultVersion = ObjectUtil.isAllEmpty(headerVersion, paramVersion);
         return defaultVersion ? null : (compareVersion(version, apiVersion) == 0 ? this : null);
     }
 
