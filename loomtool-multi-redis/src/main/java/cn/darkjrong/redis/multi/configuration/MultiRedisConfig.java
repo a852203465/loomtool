@@ -1,4 +1,4 @@
-package cn.darkjrong.redis.multi.config;
+package cn.darkjrong.redis.multi.configuration;
 
 import cn.darkjrong.redis.multi.MultiRedisConnectionFactory;
 import cn.darkjrong.redis.multi.enums.MultiRedisEnum;
