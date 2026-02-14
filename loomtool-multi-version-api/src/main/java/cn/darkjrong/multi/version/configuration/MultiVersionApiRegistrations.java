@@ -2,6 +2,7 @@ package cn.darkjrong.multi.version.configuration;
 
 import cn.darkjrong.spring.boot.autoconfigure.MultiVersionApiProperties;
 import org.springframework.boot.autoconfigure.web.servlet.WebMvcRegistrations;
+import org.springframework.core.Ordered;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
 /**
@@ -20,7 +21,9 @@ public class MultiVersionApiRegistrations implements WebMvcRegistrations {
 
     @Override
     public RequestMappingHandlerMapping getRequestMappingHandlerMapping() {
-        return new MultiVersionApiHandlerMapping(multiVersionApiProperties);
+        MultiVersionApiHandlerMapping handlerMapping = new MultiVersionApiHandlerMapping(multiVersionApiProperties);
+        handlerMapping.setOrder(Ordered.HIGHEST_PRECEDENCE);
+        return handlerMapping;
     }
 
 }

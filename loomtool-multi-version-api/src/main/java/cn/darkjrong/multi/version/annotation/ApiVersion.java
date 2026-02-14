@@ -20,7 +20,7 @@ public @interface ApiVersion {
      * 版本号
      * @return 版本号
      */
-    String value() default "";
+    String value();
 
 
 

@@ -1,9 +1,14 @@
 package cn.darkjrong.spring.boot.autoconfigure;
 
+import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.StrUtil;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * 多版本api属性
@@ -15,6 +20,8 @@ import org.springframework.stereotype.Component;
 @Component
 @ConfigurationProperties(prefix = "loom.multi.version")
 public class MultiVersionApiProperties {
+
+    private static final List<String> SWAGGER = Arrays.asList("/webjars/**", "/doc.html", "/swagger-resources/**", "/*/v3/api-docs", "/actuator/**");
 
     /**
      * 是否开启，默认：false
@@ -31,6 +38,11 @@ public class MultiVersionApiProperties {
      */
     private String parameterName = "X-API-VERSION";
 
+    /**
+     * 排除URL
+     * */
+    private List<String> excludes = new ArrayList<>();
+
 
     public String getHeaderName() {
         return StrUtil.isBlank(headerName) ? "X-API-VERSION" : headerName;
@@ -38,5 +50,11 @@ public class MultiVersionApiProperties {
 
     public String getParameterName() {
         return StrUtil.isBlank(parameterName) ? "X-API-VERSION" : parameterName;
+    }
+
+    public List<String> getExcludes() {
+        return CollUtil.isEmpty(excludes)
+                ? SWAGGER
+                : CollUtil.newArrayList(CollUtil.unionDistinct(SWAGGER, excludes));
     }
 }
