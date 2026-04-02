@@ -22,6 +22,10 @@ public @interface ApiVersion {
      */
     String value();
 
+    /**
+     * 是否废弃该版本，默认:false
+     */
+    boolean deprecated() default false;
 
 
 }

@@ -1,5 +1,6 @@
 package cn.darkjrong.spring.boot.autoconfigure;
 
+import cn.darkjrong.multi.version.constants.MultiVersionConstant;
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.StrUtil;
 import lombok.Data;
@@ -7,7 +8,6 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -21,7 +21,6 @@ import java.util.List;
 @ConfigurationProperties(prefix = "loom.multi.version")
 public class MultiVersionApiProperties {
 
-    private static final List<String> SWAGGER = Arrays.asList("/webjars/**", "/doc.html", "/swagger-resources/**", "/*/v3/api-docs", "/actuator/**");
 
     /**
      * 是否开启，默认：false
@@ -31,12 +30,12 @@ public class MultiVersionApiProperties {
     /**
      * 请求头名
      */
-    private String headerName = "X-API-VERSION";
+    private String headerName = MultiVersionConstant.MULTI_VERSION_HEADER;
 
     /**
      * 参数属性名
      */
-    private String parameterName = "X-API-VERSION";
+    private String parameterName = MultiVersionConstant.MULTI_VERSION;
 
     /**
      * 排除URL
@@ -45,16 +44,16 @@ public class MultiVersionApiProperties {
 
 
     public String getHeaderName() {
-        return StrUtil.isBlank(headerName) ? "X-API-VERSION" : headerName;
+        return StrUtil.isBlank(headerName) ? MultiVersionConstant.MULTI_VERSION_HEADER : headerName;
     }
 
     public String getParameterName() {
-        return StrUtil.isBlank(parameterName) ? "X-API-VERSION" : parameterName;
+        return StrUtil.isBlank(parameterName) ? MultiVersionConstant.MULTI_VERSION : parameterName;
     }
 
     public List<String> getExcludes() {
         return CollUtil.isEmpty(excludes)
-                ? SWAGGER
-                : CollUtil.newArrayList(CollUtil.unionDistinct(SWAGGER, excludes));
+                ? MultiVersionConstant.SWAGGER
+                : CollUtil.newArrayList(CollUtil.unionDistinct(MultiVersionConstant.SWAGGER, excludes));
     }
 }

@@ -32,7 +32,7 @@ public class MultiVersionApiCondition implements RequestCondition<MultiVersionAp
     @Override
     public MultiVersionApiCondition getMatchingCondition(HttpServletRequest request) {
         String headerVersion = request.getHeader(multiVersionApiProperties.getHeaderName());
-        String paramVersion = request.getParameter(multiVersionApiProperties.getHeaderName());
+        String paramVersion = request.getParameter(multiVersionApiProperties.getParameterName());
 //        String pathVersion = null;
 //        String pathInfo = request.getPathInfo();
 //        if (StrUtil.isNotBlank(pathInfo)) {
